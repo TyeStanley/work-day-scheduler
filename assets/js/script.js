@@ -1,35 +1,47 @@
-// GIVEN I am using a daily planner to create a schedule
+$(document).ready(function() {
+    // Set the date format
+    let now = moment().format('LLLL');
 
-// WHEN I open the planner
-// THEN the current day is displayed at the top of the calendar
+    // Display the active date
+    const currentDay = $('#currentDay');
+    currentDay.text(now);
 
-// WHEN I scroll down
-// THEN I am presented with time blocks for standard business hours
+    let currentTime = new Date();
+    let currentHour = currentTime.getHours();
 
-// WHEN I view the time blocks for that day
-// THEN each time block is color-coded to indicate whether it is in the past, present, or future
+    // Updates the textarea color to show past, present and future
+    for (let i = 9; i < 18; i++) {
+        if (i < currentHour) {
+            document.getElementById(i.toString()).classList.add('past');
+            document.getElementById(i.toString()).classList.remove('present', 'future');
+        } else if (i === currentHour) {
+            document.getElementById(i.toString()).classList.add('present');
+            document.getElementById(i.toString()).classList.remove('past', 'future');
+        } else if (i > currentHour) {
+            document.getElementById(i.toString()).classList.add('future');
+            document.getElementById(i.toString()).classList.remove('past', 'present');
+        }
+    }
+    // ^ IS GOOD ^
 
-// WHEN I click into a time block
-// THEN I can enter an event
+    $('.target').click(function(event) {
+        let event = event.target;
 
-// WHEN I click the save button for that time block
-// THEN the text for that event is saved in local storage
+        let saveBtn = 'col-md-1 saveBtn';
 
-// WHEN I refresh the page
-// THEN the saved events persist
+        let lock = $('span[class-material-symbols-outline]');
 
-// Create References for HTML
+        let eventTarget = event.classList.value;
 
-let currentDay = document.getElementById('currentDay');
-let eachRow = document.getElementById('eachRow');
+        if (eventTarget === saveBtn || lock) {
+            dataBtnValue = event.attributes[1].value;
+            let textAText = $(`textArea[data-txArea=$(dataBtnValue)]`).val();
 
-let timeSection = document.getElementById('timeSection');
-let textareaSection = document.getElementById('timeSection');
-let btnSection = document.getElementById('btnSection');
-
-
-
-const currentDate = $('#currentDay');
-currentDate.text$());
-
-currentDay.textContent = currentDate;
+            if (textAText) {
+                localStorage.setItem(`data-textArea=${dataBtnValue}`, JSON.stringify(textAText));
+            }
+            else {
+                return false;
+            }
+        }
+    });
