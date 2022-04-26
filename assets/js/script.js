@@ -1,47 +1,45 @@
-$(document).ready(function() {
-    // Set the date format
-    let now = moment().format('LLLL');
+let saveBtn = $('.saveBtn');
 
-    // Display the active date
-    const currentDay = $('#currentDay');
-    currentDay.text(now);
+// Functions
+$('#currentDay').text(moment().format('dddd MMMM Do YYYY'));
 
-    let currentTime = new Date();
-    let currentHour = currentTime.getHours();
+// Update each block to match the correct color for past, present, and future
+function blockColor() {
+    let hour = moment().hours();
 
-    // Updates the textarea color to show past, present and future
-    for (let i = 9; i < 18; i++) {
-        if (i < currentHour) {
-            document.getElementById(i.toString()).classList.add('past');
-            document.getElementById(i.toString()).classList.remove('present', 'future');
-        } else if (i === currentHour) {
-            document.getElementById(i.toString()).classList.add('present');
-            document.getElementById(i.toString()).classList.remove('past', 'future');
-        } else if (i > currentHour) {
-            document.getElementById(i.toString()).classList.add('future');
-            document.getElementById(i.toString()).classList.remove('past', 'present');
+    $('.time-block').each(function() {
+        let currentHour = parseInt($(this).attr('id'));
+
+        if (currentHour > hour) {
+            $(this).addClass('future');
+        } else if (currentHour === hour) {
+            $(this).addClass('present');
+        } else {
+            $(this).addClass('past');
         }
-    }
-    // ^ IS GOOD ^
+    })
+};
 
-    $('.target').click(function(event) {
-        let event = event.target;
+// Click save button to save the class of time-block to local storage
+saveBtn.on('click', function() {
+    let time = $(this).siblings('.hour').text();
+    let info = $(this).siblings('.description').val();
 
-        let saveBtn = 'col-md-1 saveBtn';
+    localStorage.setItem(time, info);
+});
 
-        let lock = $('span[class-material-symbols-outline]');
+// Gets content from the local save
+function localSave() {
+    $('.hour').each(function() {
+        let currentHour = $(this).text();
+        let textArea = localStorage.getItem(currentHour);
 
-        let eventTarget = event.classList.value;
-
-        if (eventTarget === saveBtn || lock) {
-            dataBtnValue = event.attributes[1].value;
-            let textAText = $(`textArea[data-txArea=$(dataBtnValue)]`).val();
-
-            if (textAText) {
-                localStorage.setItem(`data-textArea=${dataBtnValue}`, JSON.stringify(textAText));
-            }
-            else {
-                return false;
-            }
+        if (textArea !== null) {
+            $(this).siblings('.description').val(textArea);
         }
     });
+};
+
+// Calls our function
+blockColor();
+localSave();

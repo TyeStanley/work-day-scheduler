@@ -4,20 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Bootstrap -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+    <!-- Font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
+    <!-- linked css -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
   <body>
+    <!-- Title -->
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
@@ -26,64 +31,65 @@
     </header>
 
     <div class="container">
+      
       <!-- Timeblocks go here -->
-      <div class="row time-block">
-        <div id="timeSection" class="col-md-1 hour">9AM</div>
-        <textarea id="9" class="col-md-10 description"></textarea>
-        <button class="col-md-1 saveBtn" ><i class="fa-solid fa-floppy-disk"></i></button>
+      <div class="row time-block" id="9">
+        <div class="col-md-1 hour">9AM</div>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="col-md-1 saveBtn"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
     
-      <div class="row">
+      <div class="row time-block" id="10">
         <div class="col-md-1 hour">10AM</div>
-        <textarea id="10" class="col-md-10 description"></textarea>
-        <button class="col-md-1 saveBtn" ><i class="fa-solid fa-floppy-disk"></i></button>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="col-md-1 saveBtn"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
 
-      <div class="row">
+      <div class="row time-block" id="11">
         <div class="col-md-1 hour">11AM</div>
-        <textarea id="11" class="col-md-10 description"></textarea>
-        <button class="col-md-1 saveBtn" ><i class="fa-solid fa-floppy-disk"></i></button>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="col-md-1 saveBtn"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
 
-      <div class="row">
+      <div class="row time-block" id="12">
         <div class="col-md-1 hour">12PM</div>
-        <textarea id="12" class="col-md-10 description"></textarea>
-        <button class="col-md-1 saveBtn" ><i class="fa-solid fa-floppy-disk"></i></button>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="col-md-1 saveBtn"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
 
-      <div class="row">
+      <div class="row time-block" id="13">
         <div class="col-md-1 hour">1PM</div>
-        <textarea id="13" class="col-md-10 description"></textarea>
-        <button class="col-md-1 saveBtn" ><i class="fa-solid fa-floppy-disk"></i></button>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="col-md-1 saveBtn"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
 
-      <div class="row">
+      <div class="row time-block" id="14">
         <div class="col-md-1 hour">2PM</div>
-        <textarea id="14" class="col-md-10 description"></textarea>
-        <button class="col-md-1 saveBtn" ><i class="fa-solid fa-floppy-disk"></i></button>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="col-md-1 saveBtn"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
 
-      <div class="row">
+      <div class="row time-block" id="15">
         <div class="col-md-1 hour">3PM</div>
-        <textarea id="15" class="col-md-10 description"></textarea>
-        <button class="col-md-1 saveBtn" ><i class="fa-solid fa-floppy-disk"></i></button>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="col-md-1 saveBtn"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
 
-      <div class="row">
+      <div class="row time-block" id="16">
         <div class="col-md-1 hour">4PM</div>
-        <textarea id="16" class="col-md-10 description"></textarea>
-        <button class="col-md-1 saveBtn" ><i class="fa-solid fa-floppy-disk"></i></button>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="col-md-1 saveBtn"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
 
-      <div class="row">
+      <div class="row time-block" id="17">
         <div class="col-md-1 hour">5PM</div>
-        <textarea id="17" class="col-md-10 description"></textarea>
-        <button class="col-md-1 saveBtn" ><i class="fa-solid fa-floppy-disk"></i></button>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="col-md-1 saveBtn"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
 
     </div>
     
-
+    <!-- Links Jquery, Moment.js, and our local js file -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
